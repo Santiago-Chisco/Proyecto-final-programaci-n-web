@@ -2,11 +2,144 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Documento</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EmpleaVerde — Plataforma de Empleo para el Corredor Ecológico</title>
 </head>
 <body>
+  <header>
+    <h1>EmpleaVerde</h1>
+    <p>Comprometidos con la reducción del desempleo en el Corredor Ecológico</p>
+    <nav>
+      <ul>
+        <li><a href="#buscar">Buscar ofertas</a></li>
+        <li><a href="#registro">Registro</a></li>
+        <li><a href="#publicar">Publicar oferta</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main>
+    <section id="descripcion">
+      <h2>Descripción del proyecto</h2>
+      <p>EmpleaVerde es una plataforma web orientada a los habitantes del corredor ecológico para facilitar la conexión entre buscadores de empleo y empleadores locales.</p>
+      <ul>
+        <li>Registro de usuarios (buscadores y empresas).</li>
+        <li>Gestión de ofertas laborales.</li>
+        <li>Consulta y filtrado de oportunidades.</li>
+        <li>Interfaz accesible y enfoque en empleo local y sostenible.</li>
+      </ul>
+    </section>
+
+    <section id="buscar">
+      <h2>Buscar oportunidades</h2>
+      <form id="form-buscar" action="#" method="get">
+        <label for="q">Palabra clave</label>
+        <input id="q" name="q" type="text" placeholder="ej. agricultura sostenible">
+
+        <label for="tipo">Tipo de empleo</label>
+        <select id="tipo" name="tipo">
+          <option value="">Todos</option>
+          <option value="pasantia">Pasantía</option>
+          <option value="temporal">Temporal</option>
+          <option value="tiempo_completo">Tiempo completo</option>
+          <option value="medio_tiempo">Medio tiempo</option>
+        </select>
+
+        <label for="ubicacion">Ubicación</label>
+        <select id="ubicacion" name="ubicacion">
+          <option value="">Corredor Ecológico</option>
+          <option value="norte">Zona Norte</option>
+          <option value="centro">Zona Central</option>
+          <option value="sur">Zona Sur</option>
+        </select>
+
+        <button type="submit">Buscar</button>
+      </form>
+
+      <h3>Resultados</h3>
+      <ul id="lista-ofertas">
+        <li>
+          <h4>Título de la oferta</h4>
+          <p>Descripción breve de la oferta.</p>
+          <p>Tipo: Tiempo completo | Ubicación: Zona Central</p>
+        </li>
+        <!-- Más ofertas aquí -->
+      </ul>
+    </section>
+
+    <section id="registro">
+      <h2>Registro de usuarios</h2>
+      <form id="form-registro" action="#" method="post">
+        <label for="rol">Registro como</label>
+        <select id="rol" name="rol" required>
+          <option value="jobseeker">Buscador de empleo</option>
+          <option value="employer">Empresa / Empleador</option>
+        </select>
+
+        <label for="nombre">Nombre o empresa</label>
+        <input id="nombre" name="nombre" type="text" required>
+
+        <label for="correo">Correo electrónico</label>
+        <input id="correo" name="correo" type="email" required>
+
+        <label for="descripcion">Descripción (breve)</label>
+        <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+
+        <button type="submit">Crear cuenta</button>
+      </form>
+    </section>
+
+    <section id="publicar">
+      <h2>Publicar oferta</h2>
+      <form id="form-publicar" action="#" method="post">
+        <label for="titulo">Título de la oferta</label>
+        <input id="titulo" name="titulo" type="text" required>
+
+        <label for="descripcion-oferta">Descripción</label>
+        <textarea id="descripcion-oferta" name="descripcion-oferta" rows="4" required></textarea>
+
+        <label for="tipo-empleo">Tipo de empleo</label>
+        <select id="tipo-empleo" name="tipo-empleo">
+          <option value="tiempo_completo">Tiempo completo</option>
+          <option value="medio_tiempo">Medio tiempo</option>
+          <option value="temporal">Temporal</option>
+        </select>
+
+        <label for="ubicacion-oferta">Ubicación</label>
+        <select id="ubicacion-oferta" name="ubicacion-oferta">
+          <option value="centro">Zona Central</option>
+          <option value="norte">Zona Norte</option>
+          <option value="sur">Zona Sur</option>
+        </select>
+
+        <label for="nivel-educativo">Nivel educativo recomendado</label>
+        <select id="nivel-educativo" name="nivel-educativo">
+          <option value="sin_requisito">Sin requisito</option>
+          <option value="secundaria">Secundaria</option>
+          <option value="tecnico">Técnico</option>
+          <option value="tecnologo">Tecnólogo</option>
+          <option value="profesional">Profesional</option>
+        </select>
+
+        <button type="submit">Publicar oferta</button>
+      </form>
+    </section>
+
+    <section id="impacto">
+      <h2>Impacto social</h2>
+      <p>EmpleaVerde busca disminuir la tasa de desempleo en el corredor ecológico, fomentar empleos formales y promover actividades sostenibles que respeten el entorno natural.</p>
+      <ul>
+        <li>Canal directo entre empleadores y buscadores.</li>
+        <li>Fomento del empleo local.</li>
+        <li>Inclusión tecnológica.</li>
+        <li>Desarrollo sostenible.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="anio">2025</span> EmpleaVerde — Plataforma comunitaria para la reducción del desempleo en el corredor ecológico</p>
+  </footer>
 </body>
 </html>
+
