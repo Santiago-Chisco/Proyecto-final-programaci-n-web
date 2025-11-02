@@ -1,0 +1,131 @@
+/* === index.css === */
+
+:root {
+  --primary: #2b9348;
+  --secondary: #55a630;
+  --text: #222;
+  --bg: #f4f6f8;
+  --white: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.site-header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.site-header .logo {
+  font-size: 2.5rem;
+}
+
+.site-header h1 {
+  color: var(--primary);
+  margin: 0.5rem 0;
+  font-size: 1.8rem;
+}
+
+.problem-statement {
+  color: var(--secondary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* HERO SECTION */
+.hero {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(
+    rgba(43, 147, 72, 0.1),
+    rgba(85, 166, 48, 0.1)
+  );
+}
+
+.hero-content {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.hero-content h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* BOTÓN */
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .hero-content {
+    margin: 0 1rem;
+    padding: 1.5rem;
+  }
+
+  .site-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.3rem;
+  }
+}

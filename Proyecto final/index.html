@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Empleo del Corredor Ecológico</title>
+
+  <!-- Enlace al CSS -->
+  <link rel="stylesheet" href="css/proyecto-final.css" />
+
+  <!-- Enlace al JS -->
+  <script src="js/proyecto-final.js" defer></script>
+</head>
+
+<body>
+  <!-- Encabezado -->
+  <header class="site-header">
+    <h1>Portal de Empleo del Corredor Ecológico</h1>
+    <p class="problem-statement">
+      Esta aplicación busca reducir el desempleo y conectar a los habitantes del corredor ecológico con nuevas oportunidades laborales.
+    </p>
+  </header>
+
+  <!-- Contenedor principal -->
+  <main class="container" style="text-align: center;">
+    <div class="card">
+      <h2>Bienvenido</h2>
+      <p>
+        Explora oportunidades de empleo, publica tus vacantes y colabora con el desarrollo sostenible del corredor ecológico.
+      </p>
+
+      <button id="btnEntrar">Entrar</button>
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="site-footer">
+    &copy; 2025 Portal de Empleo del Corredor Ecológico — Proyecto Académico
+  </footer>
+
+  <!-- Script para el botón "Entrar" -->
+  <script>
+    document.getElementById('btnEntrar').addEventListener('click', () => {
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>
