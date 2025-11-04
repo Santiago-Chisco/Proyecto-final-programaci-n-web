@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Página principal - Bolsa de Empleo</title>
+  <link rel="stylesheet" href="proyecto-final.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Bienvenido a la Bolsa de Empleo del Corredor Ecológico</h1>
+  </header>
+
+  <main class="container">
+    <h2>Inicio</h2>
+    <p>Este será el contenido principal de la aplicación (aquí pondremos las ofertas de empleo, gestión, etc.).</p>
+    <button id="logoutBtn">Cerrar sesión</button>
+  </main>
+
+  <footer class="site-footer">
+    <div>© Proyecto académico - Corredor Ecológico</div>
+  </footer>
+
+  <script>
+    // Validar que haya sesión activa
+    const currentUser = localStorage.getItem('pf_currentUser');
+    if (!currentUser) {
+      window.location.href = 'proyecto-final.html'; // redirigir si no hay sesión
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('pf_currentUser');
+      window.location.href = 'proyecto-final.html'; // volver al login
+    });
+  </script>
+</body>
+</html>

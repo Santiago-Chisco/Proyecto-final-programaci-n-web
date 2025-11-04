@@ -1,0 +1,214 @@
+/* ======== RESET ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #eafaf1 0%, #d4f4dd 50%, #b8eacb 100%);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ======== HEADER ======== */
+.header {
+  background: linear-gradient(135deg, #007f5f, #2b9348);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: #eafaf1;
+  border-top-left-radius: 100% 50px;
+  border-top-right-radius: 100% 50px;
+}
+
+.site-header {
+  width: 100%;
+  background: linear-gradient(135deg, #007f5f, #2b9348);
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.site-header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.problem-statement {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 750px;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
+/* ======== MAIN CONTENT ======== */
+.container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 50px 40px;
+  max-width: 600px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+  color: #007f5f;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.card p {
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* ======== BUTTON ======== */
+.btn {
+  background: linear-gradient(135deg, #2b9348, #007f5f);
+  color: #fff;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 127, 95, 0.3);
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #007f5f, #004b23);
+  box-shadow: 0 8px 25px rgba(0, 127, 95, 0.4);
+  transform: scale(1.05);
+}
+
+/* ======== FOOTER ======== */
+.site-footer {
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background-color: #004b23;
+  color: #ffffff;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 600px) {
+  .site-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 35px 25px;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+/* ======== BOTÓN PRINCIPAL ======== */
+#btnEntrar {
+  background: linear-gradient(135deg, #2b9348, #007f5f);
+  color: #ffffff;
+  border: none;
+  padding: 14px 38px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 127, 95, 0.3);
+  outline: none;
+}
+
+#btnEntrar:hover {
+  background: linear-gradient(135deg, #007f5f, #004b23);
+  transform: scale(1.07);
+  box-shadow: 0 8px 25px rgba(0, 127, 95, 0.4);
+}
+
+#btnEntrar:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 8px rgba(0, 127, 95, 0.3);
+}
+.slogan {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #eafff0;
+  margin-top: 15px;
+}
+
+
+
+/* ======== SECCIÓN INFORMATIVA ======== */
+.info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 60px auto;
+  max-width: 900px;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 18px 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  font-weight: 500;
+  color: #007f5f;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1.05rem;
+}
+
+.info-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 127, 95, 0.2);
+}
+
+@media (max-width: 700px) {
+  .info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .info-item {
+    width: 90%;
+    text-align: center;
+  }
+}
