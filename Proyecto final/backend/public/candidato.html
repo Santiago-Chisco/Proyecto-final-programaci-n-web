@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal del Candidato - Corredor Ecológico</title>
+  <link rel="stylesheet" href="css/candidato.css">
+  <script src="js/candidato.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Portal del Candidato</h1>
+    <p>Encuentra y postúlate a empleos sostenibles del corredor ecológico 🌱</p>
+    <button id="btnLogout" class="logout">Cerrar sesión</button>
+  </header>
+
+  <main>
+    <section id="ofertas">
+      <h2>💼 Vacantes Disponibles</h2>
+      <div id="listaEmpleos" class="lista"></div>
+    </section>
+  </main>
+
+  <!-- 🌿 Modal del Currículum (oculto por defecto) -->
+  <div id="modalCurriculum" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="tituloCurriculum">Completa tu Currículum</h3>
+      <form id="formCurriculum">
+        <label>Teléfono:</label>
+        <input type="text" id="telefono" required>
+
+        <label>Educación:</label>
+        <input type="text" id="educacion" required>
+
+        <label>Experiencia laboral:</label>
+        <textarea id="experiencia" required></textarea>
+
+        <label>Habilidades:</label>
+        <textarea id="habilidades" required></textarea>
+
+        <label>Carta de presentación (opcional):</label>
+        <textarea id="carta_presentacion"></textarea>
+
+        <div class="btns">
+          <button type="submit">Enviar Currículum</button>
+          <button type="button" id="cancelarCurriculum">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Portal de Empleo del Corredor Ecológico</p>
+  </footer>
+</body>
+</html>

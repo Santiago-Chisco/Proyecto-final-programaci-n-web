@@ -1,0 +1,110 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #eaf7ee;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header {
+  background-color: #1b7b4c;
+  color: white;
+  text-align: center;
+  padding: 1.5em 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 2em auto;
+}
+
+h2 {
+  color: #1b7b4c;
+}
+
+.formulario {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.formulario label {
+  display: block;
+  margin-top: 1em;
+}
+
+.formulario input, .formulario textarea {
+  width: 100%;
+  padding: 0.7em;
+  margin-top: 0.4em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn {
+  background-color: #1b7b4c;
+  color: white;
+  border: none;
+  padding: 0.8em 1.5em;
+  margin-top: 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #16633c;
+}
+
+.vacantes {
+  margin-top: 2em;
+}
+
+.oferta-card {
+  background: white;
+  border-left: 5px solid #1b7b4c;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+/* 🔹 Estilos del contenedor de ofertas */
+.lista-empleos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.oferta-card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.oferta-card:hover {
+  transform: scale(1.01);
+}
+
+/* 🔹 Botón eliminar */
+.btnEliminar {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.btnEliminar:hover {
+  background-color: #c9302c;
+}

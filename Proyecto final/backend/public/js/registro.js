@@ -1,46 +1,31 @@
-// Esperar a que el DOM cargue completamente
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("registerForm");
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  const nombre = document.getElementById("nombre").value;
+  const correo = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const tipo = document.getElementById("tipo").value;
 
-    // Tomamos los valores del formulario
-    const data = {
-      nombre: document.getElementById("nombre").value.trim(),
-      correo: document.getElementById("email").value.trim(),
-      password: document.getElementById("password").value.trim(),
-      tipo: document.getElementById("tipo").value
-    };
+  try {
+    const response = await fetch("http://localhost:3000/registro", { // ✅ RUTA CORRECTA
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nombre, correo, password, tipo })
+    });
 
-    // Validación rápida
-    if (!data.nombre || !data.correo || !data.password || !data.tipo) {
-      alert("⚠️ Por favor, completa todos los campos.");
-      return;
+    const data = await response.json();
+    if (data.success) {
+      alert("✅ Usuario registrado correctamente");
+      document.getElementById("registerForm").reset();
+    } else {
+      alert("⚠️ " + data.message);
     }
 
-    try {
-      // Enviar los datos al backend (ruta /usuarios)
-      const res = await fetch("http://localhost:3000/usuarios", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-
-      const result = await res.json();
-
-      if (res.ok) {
-        alert("✅ " + result.message);
-        // Redirigir al login después de registrarse
-        window.location.href = "login.html";
-      } else {
-        alert("❌ Error al registrar: " + (result.error || "Intenta de nuevo."));
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("⚠️ No se pudo conectar con el servidor. Verifica que el backend esté corriendo.");
-    }
-  });
+  } catch (error) {
+    console.error("Error al registrar:", error);
+    alert("⚠️ No se pudo conectar con el servidor. Verifica que el backend esté corriendo.");
+  }
 });
+
 
 

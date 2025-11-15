@@ -1,46 +1,46 @@
-// Esperar a que el DOM cargue completamente
+// registro.js
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("registerForm");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Tomamos los valores del formulario
-    const data = {
-      nombre: document.getElementById("nombre").value.trim(),
-      correo: document.getElementById("email").value.trim(),
-      password: document.getElementById("password").value.trim(),
-      tipo: document.getElementById("tipo").value
-    };
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const tipo = document.getElementById("tipo").value;
 
-    // Validación rápida
-    if (!data.nombre || !data.correo || !data.password || !data.tipo) {
-      alert("⚠️ Por favor, completa todos los campos.");
+    if (!nombre || !email || !password || !tipo) {
+      alert("Por favor, completa todos los campos.");
       return;
     }
 
-    try {
-      // Enviar los datos al backend (ruta /usuarios)
-      const res = await fetch("http://localhost:3000/usuarios", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+    // Simulación mientras no tenemos backend
+    console.log("Datos a enviar:", { nombre, email, password, tipo });
+
+    // Simulación de espera (como si fuera el servidor)
+    setTimeout(() => {
+      alert("✅ Registro exitoso. Ahora puedes iniciar sesión.");
+      window.location.href = "login.html";
+    }, 1000);
+
+    /* 
+    🔗 FUTURA CONEXIÓN A BACKEND (cuando tengamos PHP o Node.js)
+    fetch("backend/registro.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ nombre, email, password, tipo })
+    })
+      .then(res => res.text())
+      .then(data => {
+        if (data === "success") {
+          alert("✅ Registro exitoso. Ahora puedes iniciar sesión.");
+          window.location.href = "login.html";
+        } else {
+          alert("⚠️ Error al registrar. Intenta nuevamente.");
+        }
       });
-
-      const result = await res.json();
-
-      if (res.ok) {
-        alert("✅ " + result.message);
-        // Redirigir al login después de registrarse
-        window.location.href = "login.html";
-      } else {
-        alert("❌ Error al registrar: " + (result.error || "Intenta de nuevo."));
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("⚠️ No se pudo conectar con el servidor. Verifica que el backend esté corriendo.");
-    }
+    */
   });
 });
-
 

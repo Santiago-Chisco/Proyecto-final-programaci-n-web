@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Empresa - Corredor Ecológico</title>
+
+  <link rel="stylesheet" href="css/empresa.css">
+  <script src="js/empresa.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <h1>Portal de Empleo del Corredor Ecológico</h1>
+    <p class="problem-statement">
+      Aquí puedes publicar nuevas ofertas laborales y ver las vacantes activas de tu empresa.
+    </p>
+  </header>
+
+  <main class="container">
+    <section class="publicar">
+      <h2> Publicar Nueva Vacante</h2>
+      <form id="formEmpleo" class="formulario">
+        <label for="titulo">Título del empleo</label>
+        <input type="text" id="titulo" placeholder="Ejemplo: Ingeniero Ambiental" required>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" rows="4" placeholder="Describe las responsabilidades y requisitos..." required></textarea>
+
+        <label for="ubicacion">Ubicación</label>
+        <input type="text" id="ubicacion" placeholder="Ejemplo: Villavicencio, Meta" required>
+
+        <button type="submit" class="btn">Publicar</button>
+      </form>
+    </section>
+
+    <section class="vacantes">
+      <h2> Vacantes Publicadas</h2>
+      <div id="listaEmpleos" class="lista-empleos">
+        <p class="placeholder">Cargando vacantes...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    &copy; 2025 Portal de Empleo del Corredor Ecológico — Proyecto Académico
+  </footer>
+</body>
+</html>
+
+

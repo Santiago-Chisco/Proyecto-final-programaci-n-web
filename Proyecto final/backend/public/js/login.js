@@ -1,29 +1,46 @@
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
 
-  const correo = document.getElementById("correo").value.trim();
-  const password = document.getElementById("password").value.trim();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ correo, password })
-    });
+    const correo = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    const data = await response.json();
+    try {
+      const res = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ correo, password })
+      });
 
-    if (data.success) {
-      alert("✅ Inicio de sesión exitoso");
-      // Guardar datos del usuario en localStorage (opcional)
-      localStorage.setItem("usuario", JSON.stringify(data.user));
-      // Redirigir a la página principal
-      window.location.href = "principal.html";
-    } else {
-      alert("❌ " + data.message);
+      const data = await res.json();
+
+      if (data.success) {
+        alert("✅ Inicio de sesión exitoso");
+
+        // Guardamos el usuario en localStorage
+       localStorage.setItem("usuarioActivo", JSON.stringify(data.user));
+       console.log("Usuario guardado:", data.user);
+
+
+        // Dependiendo del tipo redirigimos
+        if (data.user.tipo === "EMPRESA") {
+          window.location.href = "empresa.html";
+        } else if (data.user.tipo === "CANDIDATO") {
+          window.location.href = "candidato.html";
+        } else {
+          alert("Tipo de usuario desconocido");
+        }
+      } else {
+        alert("⚠️ " + data.message);
+      }
+    } catch (error) {
+      console.error("Error en el login:", error);
+      alert("❌ No se pudo conectar con el servidor");
     }
-  } catch (error) {
-    console.error("Error:", error);
-    alert("⚠️ Error al conectar con el servidor");
-  }
+  });
 });
+
+
+
