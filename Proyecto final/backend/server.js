@@ -127,17 +127,27 @@ app.post("/empleos", (req, res) => {
 });
 
 
+
 // ============================
 // 🔰 RUTA PARA ELIMINAR EMPLEOS
 // ============================
-
 app.delete("/empleos/:id", (req, res) => {
-  const { id } = req.params;
+  const id = parseInt(req.params.id, 10); // 🔥 aseguramos número
+
+  console.log("🗑️ Eliminando empleo con ID:", id);
+
+  if (isNaN(id)) {
+    return res.status(400).json({
+      success: false,
+      message: "ID de empleo inválido"
+    });
+  }
 
   const sql = "DELETE FROM empleos WHERE id = ?";
+
   db.query(sql, [id], (err, result) => {
     if (err) {
-      console.error("❌ Error al eliminar empleo:", err);
+      console.error("❌ Error al eliminar empleo:", err.sqlMessage);
       return res.status(500).json({
         success: false,
         message: "Error al eliminar el empleo",
@@ -146,16 +156,17 @@ app.delete("/empleos/:id", (req, res) => {
     }
 
     if (result.affectedRows === 0) {
+      console.warn(`⚠️ No se encontró empleo con ID ${id}`);
       return res.status(404).json({
         success: false,
-        message: "Empleo no encontrado"
+        message: "No se encontró el empleo especificado"
       });
     }
 
-    console.log(`🗑️ Empleo con ID ${id} eliminado correctamente`);
+    console.log(`✅ Empleo con ID ${id} eliminado correctamente`);
     res.json({
       success: true,
-      message: "Vacante eliminada correctamente"
+      message: "Vacante eliminada correctamente 🗑️"
     });
   });
 });

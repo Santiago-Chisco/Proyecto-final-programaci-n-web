@@ -15,11 +15,14 @@
     <p class="problem-statement">
       Aquí puedes publicar nuevas ofertas laborales y ver las vacantes activas de tu empresa.
     </p>
+
+    <!-- 🔰 Botón de Cerrar Sesión -->
+    <button id="btnLogout" class="logout-btn">Cerrar sesión</button>
   </header>
 
   <main class="container">
     <section class="publicar">
-      <h2> Publicar Nueva Vacante</h2>
+      <h2>Publicar Nueva Vacante</h2>
       <form id="formEmpleo" class="formulario">
         <label for="titulo">Título del empleo</label>
         <input type="text" id="titulo" placeholder="Ejemplo: Ingeniero Ambiental" required>
@@ -35,7 +38,7 @@
     </section>
 
     <section class="vacantes">
-      <h2> Vacantes Publicadas</h2>
+      <h2>Vacantes Publicadas</h2>
       <div id="listaEmpleos" class="lista-empleos">
         <p class="placeholder">Cargando vacantes...</p>
       </div>
@@ -45,6 +48,20 @@
   <footer class="site-footer">
     &copy; 2025 Portal de Empleo del Corredor Ecológico — Proyecto Académico
   </footer>
+
+  <script>
+    // 🔒 Botón de cerrar sesión
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnLogout = document.getElementById("btnLogout");
+      if (btnLogout) {
+        btnLogout.addEventListener("click", () => {
+          localStorage.removeItem("usuarioActivo");
+          alert("Sesión cerrada correctamente.");
+          window.location.href = "login.html";
+        });
+      }
+    });
+  </script>
 </body>
 </html>
 

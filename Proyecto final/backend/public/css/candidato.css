@@ -1,4 +1,4 @@
-/* === Modal del currículum === */
+
 .hidden {
   display: none;
 }
@@ -64,7 +64,7 @@
   background: #b71c1c;
   color: white;
 }
-/* === Modal del currículum === */
+
 .hidden {
   display: none;
 }
@@ -269,7 +269,6 @@ main {
   margin-top: 20px;
 }
 
-/* Tarjetas de vacantes */
 .oferta-card {
   background-color: #f9fff9;
   border: 1px solid #c8e6c9;
@@ -305,7 +304,6 @@ main {
   background-color: #2e7d32;
 }
 
-/* Footer */
 footer {
   background-color: #f1f8e9;
   text-align: center;

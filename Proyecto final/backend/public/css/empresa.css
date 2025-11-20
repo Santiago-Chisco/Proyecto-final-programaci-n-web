@@ -108,3 +108,34 @@ h2 {
 .btnEliminar:hover {
   background-color: #c9302c;
 }
+.btnEliminar {
+  background-color: #b71c1c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnEliminar:hover {
+  background-color: #d32f2f;
+}
+
+.logout-btn {
+  background-color: #16962c81;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  float: right;
+  margin-top: -60px;
+  margin-right: 30px;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}

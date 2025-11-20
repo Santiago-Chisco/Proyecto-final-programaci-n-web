@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 🕒 Esperar un poco para asegurar que localStorage esté disponible
   setTimeout(() => {
     const form = document.getElementById("formEmpleo");
     const lista = document.getElementById("listaEmpleos");
@@ -11,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ✅ Leer usuario activo desde localStorage
     const userData = localStorage.getItem("usuarioActivo");
-
     if (!userData) {
       alert("Acceso denegado. Debes iniciar sesión como empresa.");
       window.location.href = "login.html";
@@ -21,15 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const user = JSON.parse(userData);
 
     // ✅ Validar tipo de usuario
-    if (!user.tipo || user.tipo.toUpperCase() !== "EMPRESA") {
+    if (!user.tipo || user.tipo.toLowerCase() !== "empresa") {
       alert("Acceso denegado. Debes iniciar sesión como empresa.");
       window.location.href = "login.html";
       return;
     }
 
-    console.log("🟢 Usuario autenticado:", user.nombre);
+    console.log("🟢 Empresa autenticada:", user.nombre);
 
-    // ✅ Cargar empleos publicados
+    // ✅ Cargar empleos de esta empresa
     async function cargarEmpleos() {
       try {
         const res = await fetch("http://localhost:3000/empleos");
@@ -37,26 +35,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         lista.innerHTML = "";
 
-        if (data.length === 0) {
-          lista.innerHTML = `<p class="placeholder">Aún no hay vacantes publicadas.</p>`;
+        // 🔎 Filtrar solo las vacantes de esta empresa
+        const empleosEmpresa = data.filter(
+          (emp) => emp.empresa === user.nombre
+        );
+
+        if (empleosEmpresa.length === 0) {
+          lista.innerHTML = `<p class="placeholder">Aún no has publicado vacantes.</p>`;
           return;
         }
 
-        data.forEach((emp) => {
+        // 🧱 Crear las tarjetas de cada empleo
+        empleosEmpresa.forEach((emp) => {
           const card = document.createElement("div");
           card.classList.add("oferta-card");
           card.innerHTML = `
             <h3>${emp.titulo}</h3>
             <p>${emp.descripcion}</p>
             <small>📍 ${emp.ubicacion || "Ubicación no especificada"}</small><br>
-            <small>Publicado por: <strong>${emp.empresa}</strong></small>
-            <br>
-            <button class="btnEliminar" data-id="${emp.id}">Eliminar</button>
+            <button class="btnEliminar" data-id="${emp.id}">🗑️ Eliminar</button>
           `;
           lista.appendChild(card);
         });
 
-        // 🗑️ Agregar evento de eliminación después de renderizar
+        // 🗑️ Agregar eventos de eliminación
         document.querySelectorAll(".btnEliminar").forEach((btn) => {
           btn.addEventListener("click", async (e) => {
             const id = e.target.dataset.id;
@@ -66,9 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
               const res = await fetch(`http://localhost:3000/empleos/${id}`, {
                 method: "DELETE",
               });
+
               const data = await res.json();
               alert(data.message || "Vacante eliminada correctamente");
-              cargarEmpleos(); // 🔁 recargar lista
+              cargarEmpleos(); // 🔁 refrescar lista
             } catch (error) {
               console.error("❌ Error al eliminar empleo:", error);
               alert("No se pudo eliminar la vacante.");
@@ -77,10 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } catch (error) {
         console.error("❌ Error al cargar empleos:", error);
+        lista.innerHTML = `<p>Error al cargar vacantes.</p>`;
       }
     }
-
-    cargarEmpleos();
 
     // ✅ Publicar nueva vacante
     form.addEventListener("submit", async (e) => {
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         titulo: document.getElementById("titulo").value.trim(),
         descripcion: document.getElementById("descripcion").value.trim(),
         ubicacion: document.getElementById("ubicacion").value.trim(),
-        id_empresa: user.id, // 🟢 ID de la empresa autenticada
+        id_empresa: user.id,
       };
 
       if (!nuevoEmpleo.titulo || !nuevoEmpleo.descripcion) {
@@ -111,8 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
         cargarEmpleos();
       } catch (error) {
         console.error("❌ Error al publicar empleo:", error);
-        alert("No se pudo publicar la vacante. Verifica el servidor.");
+        alert("No se pudo publicar la vacante.");
       }
     });
-  }, 200); // ⏱️ Espera breve para asegurar que el localStorage esté listo
+
+    cargarEmpleos(); // 🚀 inicial
+  }, 200);
 });
